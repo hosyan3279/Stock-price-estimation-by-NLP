@@ -33,3 +33,4 @@ print("\n")
 #適合率
 print(precision_score(y_test, y_pred))
 print("\n")
+
