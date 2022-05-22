@@ -110,7 +110,11 @@ def create_dictionary(*texts):
     return dictionary
 
 
-def remove_stopwords(*words, stopwords):
+def remove_stopwords(*
+                     words):
+    dictionary = create_dictionary(words)
+    stopwords = get_stop_words(dictionary)
+
     words = [word for word in words if word not in stopwords]
     return words
 

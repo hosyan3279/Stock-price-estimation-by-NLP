@@ -94,7 +94,7 @@ if __name__ == "__main__":
     stop_words = processing_text.get_stop_words(dictionary)
 
     for data in corpus:
-        corpus = processing_text.remove_stopwords(corpus["text"], stop_words)
+        corpus = processing_text.remove_stopwords(corpus["text"])
 
     print(corpus)
 
