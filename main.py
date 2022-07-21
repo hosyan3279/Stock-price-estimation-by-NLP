@@ -4,7 +4,7 @@ from sklearn.feature_selection import SelectKBest, mutual_info_classif
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 
-from prepro import clean_html, tokenize
+
 from utils import load_dataset
 
 
@@ -12,7 +12,6 @@ def main():
     # まだ
     x, y = load_dataset('###############', n=5000)
 
-    x = [clean_html(text, strip=True) for text in x]
     x_train, x_test, y_train, y_test = train_test_split(x, y,
                                                         test_size=0.2,
                                                         random_state=42)
