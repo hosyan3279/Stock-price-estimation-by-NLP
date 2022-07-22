@@ -14,7 +14,7 @@ import collections
 
 
 def convert_pdf_to_txt(path):
-    for filename in os.listdir("C:\\Users\\p-user\\Desktop\\pythonProject1\\data2"):
+    for filename in os.listdir("C:\\Users\\p-user\\Desktop\\pythonProject1\\data"):
 
         if filename.endswith(".pdf"):
             rsrcmgr = PDFResourceManager()
@@ -60,7 +60,7 @@ if __name__ == "__main__":
                 except:
                     pass
 
-    text_files = glob.glob("C:\\Users\\p-user\\Desktop\\pythonProject1\\data2/*.pdf")
+    text_files = glob.glob("C:\\Users\\p-user\\Desktop\\pythonProject1\\data/*.pdf")
     k = 0
     i = len(data_list_stock)
     stopwords = []
@@ -94,7 +94,7 @@ if __name__ == "__main__":
     c = list(c.keys())
     data_list2 = []
     print(c)
-
+    print(data_list)
     for i in range(len(data_list)):
         data_list[i][2] = [word for word in data_list[i][2] if word not in c]
 

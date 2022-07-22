@@ -18,12 +18,13 @@ text = df["text"]
 df = df.sample(frac=1, random_state=1)  # シャッフル
 grouped = df.groupby("label")
 df = grouped.head(n=4000)
-print(df["text"], df["label"])
 
-x_train, x_test, y_train, y_test = train_test_split(df["text"].values, df["label"].values,
-                                                    test_size=0.2,
-                                                    random_state=42)
+
+x_train, x_test, y_train, y_test = train_test_split(df["text"], df["label"],
+                                                    test_size=0.2, random_state=1)
+
 print(np.shape(x_train), np.shape(x_test))
+print(y_train)
 
 lowercase = False
 tokenize = None
