@@ -13,7 +13,7 @@ import datetime
 import collections
 
 
-def convert_pdf_to_txt(path):
+def   convert_pdf_to_txt(path):
     for filename in os.listdir("C:\\Users\\p-user\\Desktop\\pythonProject1\\data"):
 
         if filename.endswith(".pdf"):
