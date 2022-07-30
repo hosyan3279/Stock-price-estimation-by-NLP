@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 from sklearn import svm
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-df = pd.read_csv("C:\\Users\\hiroyuki\\Desktop\\same\\copy\\corpus.tsv", sep="\t")
+df = pd.read_csv("/copy/train_test_data\\corpus.tsv", sep="\t")
 
 df.columns = ["date", "id", "text", "label"]
 df = df * 1
