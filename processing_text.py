@@ -8,7 +8,7 @@ import os
 import urllib.request
 from collections import Counter
 
-from gensim import corpora
+#from gensim import corpora
 
 
 
@@ -17,7 +17,7 @@ from gensim import corpora
 
 def wakati(text):
     #'-Owakati -d"C:\\Program Files\\MeCab\\dic\\ipadic-neologd"'
-    wakati = MeCab.Tagger('-Owakati -d"C:\\Program Files\\MeCab\\dic\\ipadic-neologd"')
+    wakati = MeCab.Tagger('-Owakati -d"C:\\Users\\hiroyuki\\Desktop\\ipadic\\mecab-ipadic-neologd"')
     text = wakati.parse(text)
     return text
 
