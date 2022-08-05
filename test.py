@@ -1,3 +1,4 @@
+"""
 import numpy as np
 import pandas as pd
 from sklearn.datasets import load_iris
@@ -33,4 +34,50 @@ print("\n")
 #適合率
 print(precision_score(y_test, y_pred))
 print("\n")
+"""
 
+import pandas as pd
+import numpy as np
+import string
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.metrics import accuracy_score
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
+from sklearn import svm
+from sklearn.feature_extraction.text import TfidfVectorizer
+import random
+
+df = pd.read_csv("C:\\Users\\hiroyuki\\Desktop\\same\\copy\\train_test_data\\test_corpus.tsv", sep="\t")
+
+df.columns = ["date", "id", "text", "label"]
+df = df * 1
+text = df["text"]
+# corpusの整形
+text = text.str.replace("[", "")
+text = text.str.replace("]", "")
+print(df["label"])
+
+# labelの整形
+# 各データの特徴数を揃える
+for i in range(len(df["label"])):
+    if df["label"].iloc[i] == -1:
+        df["label"][i] = 0
+
+for k in range(len(df["text"])):
+    print(tuple(random.sample(df["text"][k], 14)))
+    df["text"][k] = tuple(random.sample(df["text"][k], 14))
+0
+print(df)
+# print(df["label"])
+# print(df["text"])
+
+# シャッフル
+df = df.sample(frac=1, random_state=1)
+# grouped = df.groupby("label")
+# df = grouped.head(n=4000)
+X = df["text"].values
+Y = df["label"].values
+
+manual_data = pd.DataFrame(X, Y, columns=["text", "label"])
+print(manual_data)
+manual_data.to_csv("C:\\Users\\hiroyuki\\Desktop\\same\\copy\\train_test_data\\manual_data.tsv", sep="\t")
