@@ -13,13 +13,8 @@ from sklearn.model_selection import ShuffleSplit
 from utils import plot_learning_curve
 
 
-def cleaning_tokenize_split(text):
-    return text
-
-
-def train_and_eval():
-    df = pd.read_csv("C:\\Users\\hiroyuki\\Desktop\\same\\copy\\train_test_data\\corpus.tsv", sep="\t")
-
+def cleaning_tokenize_split(load_dataset):
+    df = pd.read_csv(load_dataset, sep="\t")
     df.columns = ["date", "id", "text", "label"]
     df = df * 1
     text = df["text"]
@@ -68,6 +63,14 @@ def train_and_eval():
     print("  shape  \ny_train y_test \n", np.shape(y_train), np.shape(y_test))
     print("x_train_vec x_test_vec \n", x_train_vec, x_test_vec)
     print("y_train y_test \n", y_train, y_test)
+
+    return x_train_vec, x_test_vec, y_train, y_test
+
+
+def train_and_eval():
+    load_dataset = "C:\\Users\\hiroyuki\\Desktop\\same\\copy\\train_test_data\\corpus.tsv"
+
+    x_train_vec, x_test_vec, y_train, y_test = cleaning_tokenize_split(load_dataset)
 
     # clf = LogisticRegression(solver="liblinear",penalty="l2",C=0.1)
     # clf.fit(x_train_vec, y_train)
