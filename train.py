@@ -9,12 +9,13 @@ from sklearn.model_selection import train_test_split
 from sklearn import svm
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import ShuffleSplit
+from sklearn.model_selection import cross_val_score
 
 from utils import plot_learning_curve
 
 
-def cleaning_tokenize_split(load_dataset):
-    df = pd.read_csv(load_dataset, sep="\t")
+def cleaning_tokenize_split(dataset_path):
+    df = pd.read_csv(dataset_path, sep="\t")
     df.columns = ["date", "id", "text", "label"]
     df = df * 1
     text = df["text"]
@@ -68,13 +69,18 @@ def cleaning_tokenize_split(load_dataset):
 
 
 def train_and_eval():
-    load_dataset = "C:\\Users\\hiroyuki\\Desktop\\same\\copy\\train_test_data\\corpus.tsv"
+    dataset_path = "C:\\Users\\hiroyuki\\Desktop\\same\\copy\\train_test_data\\corpus.tsv"
 
-    x_train_vec, x_test_vec, y_train, y_test = cleaning_tokenize_split(load_dataset)
+    x_train_vec, x_test_vec, y_train, y_test = cleaning_tokenize_split(dataset_path)
 
     # clf = LogisticRegression(solver="liblinear",penalty="l2",C=0.1)
     # clf.fit(x_train_vec, y_train)
     clf = svm.SVC()
+
+    # k分割交差検証
+    scores = cross_val_score(clf, x_train_vec, y_train, cv=10)
+    print(scores)
+    print("accuracy: {:.4f} (± {:.4f})".format(scores.mean(), scores.std() * 2))
     clf.fit(x_train_vec, y_train)
     y_predict = clf.predict(x_test_vec)
     score = accuracy_score(y_test, y_predict)
