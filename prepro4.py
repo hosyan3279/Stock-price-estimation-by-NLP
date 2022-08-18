@@ -14,7 +14,7 @@ import collections
 
 
 def   convert_pdf_to_txt(path):
-    for filename in os.listdir("C:\\Users\\p-user\\Desktop\\pythonProject1\\data"):
+    for filename in os.listdir("C:\\Users\\p-user\\Desktop\\Stock-price-estimation-by-NLP\\data"):
 
         if filename.endswith(".pdf"):
             rsrcmgr = PDFResourceManager()
@@ -44,7 +44,7 @@ def   convert_pdf_to_txt(path):
 
 if __name__ == "__main__":
     # 株価データの取得
-    stock_files = glob.glob("C:\\Users\\p-user\\Desktop\\pythonProject1\\stockdata/*.csv")
+    stock_files = glob.glob("C:\\Users\\p-user\\Desktop\\Stock-price-estimation-by-NLP\\stockdata/*.csv")
     data_list_stock = []
     data_list = []
     # stockdataを一行ずつ読み込んでlistに格納
@@ -60,7 +60,7 @@ if __name__ == "__main__":
                 except:
                     pass
 
-    text_files = glob.glob("C:\\Users\\p-user\\Desktop\\pythonProject1\\data/*.pdf")
+    text_files = glob.glob("C:\\Users\\p-user\\Desktop\\Stock-price-estimation-by-NLP\\data2/*.pdf")
     k = 0
     i = len(data_list_stock)
     stopwords = []
@@ -105,6 +105,6 @@ if __name__ == "__main__":
 
     print(corpus)
 
-    corpus.to_csv("C:\\Users\\p-user\\Desktop\\pythonProject1\\corpus.tsv", sep="\t", index=False, encoding="utf-8")
+    corpus.to_csv("C:\\Users\\p-user\\Desktop\\Stock-price-estimation-by-NLP\\corpus.tsv", sep="\t", index=False, encoding="utf-8")
 
     # day_beforeは負がTrueで正と0がFalse
